@@ -1,0 +1,42 @@
+Quartus II Archive log --	D:/Codes/Verilog/SingleCycleCPU/SingleCycleCPU.qarlog
+
+Archive:	D:/Codes/Verilog/SingleCycleCPU/SingleCycleCPU.qar
+Date:		Thu May 14 00:27:21 2020
+Quartus II 64-Bit		13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+
+	=========== Files Selected: ===========
+D:/Codes/Verilog/SingleCycleCPU/SingleCycleCPU.qpf
+D:/Codes/Verilog/SingleCycleCPU/SingleCycleCPU.qsf
+D:/Codes/Verilog/SingleCycleCPU/dataRAM.bsf
+D:/Codes/Verilog/SingleCycleCPU/dataRAM.qip
+D:/Codes/Verilog/SingleCycleCPU/dataRAM_bb.v
+D:/Codes/Verilog/SingleCycleCPU/incremental_db/compiled_partitions/SingleCycleCPU.db_info
+D:/Codes/Verilog/SingleCycleCPU/insrtROM.bsf
+D:/Codes/Verilog/SingleCycleCPU/insrtROM.qip
+D:/Codes/Verilog/SingleCycleCPU/insrtROM_bb.v
+D:/Codes/Verilog/SingleCycleCPU/src/ALU32.v
+D:/Codes/Verilog/SingleCycleCPU/src/Add32.v
+D:/Codes/Verilog/SingleCycleCPU/src/Add4.v
+D:/Codes/Verilog/SingleCycleCPU/src/AluControl.v
+D:/Codes/Verilog/SingleCycleCPU/src/Control.v
+D:/Codes/Verilog/SingleCycleCPU/src/Decoder5_32.v
+D:/Codes/Verilog/SingleCycleCPU/src/ImExt.v
+D:/Codes/Verilog/SingleCycleCPU/src/SingleCycleCPU.v
+D:/Codes/Verilog/SingleCycleCPU/src/dataRAM.v
+D:/Codes/Verilog/SingleCycleCPU/src/insrtROM.v
+D:/Codes/Verilog/SingleCycleCPU/src/mux2_32.v
+D:/Codes/Verilog/SingleCycleCPU/src/mux32_1.v
+D:/Codes/Verilog/SingleCycleCPU/src/mux32_32.v
+D:/Codes/Verilog/SingleCycleCPU/src/mux4_32.v
+D:/Codes/Verilog/SingleCycleCPU/src/reg32.v
+D:/Codes/Verilog/SingleCycleCPU/src/regHeap.v
+D:/Codes/Verilog/SingleCycleCPU/tb/tb_Decoder5_32.v
+D:/Codes/Verilog/SingleCycleCPU/tb/tb_SingleCycleCPU.v
+D:/Codes/Verilog/SingleCycleCPU/tb/tb_reg32.v
+D:/Codes/Verilog/SingleCycleCPU/tb/tb_regHeap.v
+D:/Codes/Verilog/SingleCycleCPU/testCode.mif
+e:/altera/13.0sp1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 31 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,16 @@
+module Control();
+
+input wire [5:0] opcode;
+
+output wire [2:0] AluCtrl;
+output wire s_Imext;
+output wire s_A_src;
+output wire s_B_src;
+output wire [1:0] s_PC_src;
+output wire s_write_reg;
+output wire s_reg_wb_src;
+
+
+
+endmodule
+

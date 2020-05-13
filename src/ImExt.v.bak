@@ -1,0 +1,10 @@
+module ImExt(D, DOUT, s_ImExt);
+
+input wire [15:0] D;
+input wire s_ImExt;
+output wire [31:0] DOUT;
+
+assign DOUT = {{16'b0}, D} & {32{s_ImExt}} | {16{D[15]}, D} & {32{~s_ImExt}};
+
+endmodule
+

@@ -1,0 +1,53 @@
+module tb_reg32();
+	
+	reg [31:0] D;
+	reg clr;
+	reg clk;
+	reg En;
+	
+	wire [31:0] DOUT;
+
+	reg32 reg_32( 
+		.clr(clr),
+		.clk(clk), 
+		.En(En),
+		.DOUT(DOUT), 
+		.D(D)); 
+		
+	initial
+	begin
+			clr <= 1;
+			clk <= 0;
+			# 5 
+			clr <= 0;
+			En <= 0; 
+			
+			# 8
+			D <= 32'h123;
+			# 14
+			D <= 32'h765;
+			# 8
+			D <= 32'h123;
+			# 14
+			D <= 32'h765;
+			# 8
+			D <= 32'h123;
+			En <= 1;
+			# 14
+			D <= 32'h765;
+			# 8
+			D <= 32'h123;
+			# 14
+			D <= 32'h765;
+			# 8
+			D <= 32'h123;
+			# 14
+			D <= 32'h765;
+			
+	end
+	
+	always begin
+		# 10 clk <= ~clk;
+	end
+		
+endmodule

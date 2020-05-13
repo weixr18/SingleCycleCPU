@@ -1,0 +1,97 @@
+module ALU32(A, B, S, AluOp, s_Equal, s_Overflow,
+				 cout
+				 );
+
+	input [31:0] A;
+	input [31:0] B;
+	input [3:0] AluOp;
+	output [31:0] S;
+	output s_Equal;
+	output s_Overflow;
+	output cout;
+	
+	wire is_sub;
+	assign is_sub = AluOp[2];
+	wire [31:0] B_in;
+	assign B_in = {32{is_sub}} & ~B | {32{~is_sub}} & B;
+	wire [31:0] res_add;
+	
+
+	Add32 add32(
+			.A(A),
+			.B(B_in),
+			.cin(is_sub),
+			.S(res_add),
+			.cout(cout),
+			.s_overflow(s_Overflow)
+			);
+		
+	wire [32:0] res_cmp;
+	Add32 cmp32(
+			.A(A),
+			.B(~B),
+			.cin(1'b1),
+			.S(res_cmp[31:0]),
+			.cout(res_cmp[32]),
+			.s_overflow()
+			);
+			
+	wire res_slt = res_cmp[31];
+	wire res_sltu = res_cmp[32];
+	wire [31:0] res_and = A & B;
+	wire [31:0] res_or = A | B;
+	wire [31:0] res_nor = ~res_or;
+	
+	wire and_sel = ~AluOp[3] & ~AluOp[2] & ~AluOp[1] & ~AluOp[0] ;	//0000
+	wire or_sel = ~AluOp[3] & ~AluOp[2] & ~AluOp[1] & AluOp[0] ;		//0001
+	wire add_sel = ~AluOp[3] &              AluOp[1] & ~AluOp[0] ;	//0x10
+	wire slt_sel = ~AluOp[3] & AluOp[2] & AluOp[1] & AluOp[0] ;		//0111
+	wire sltu_sel = ~AluOp[3] & ~AluOp[2] & AluOp[1] & AluOp[0] ;		//0011 
+	wire nor_sel = AluOp[3] & AluOp[2] & ~AluOp[1] & ~AluOp[0] ;		//1100
+	wire beq_sel = ~AluOp[3] & AluOp[2] & ~AluOp[1] & ~AluOp[0] ;		//0100
+	wire bne_sel = ~AluOp[3] & AluOp[2] & ~AluOp[1] & AluOp[0] ;		//0101
+	
+	assign S = {32{and_sel}} & res_and |
+				  {32{or_sel}} & res_or |
+				  {32{add_sel}} & res_add |
+				  {32{slt_sel}} & {{31'b0},res_slt} |
+				  {32{sltu_sel}} & {{31'b0},res_sltu} |
+				  {32{nor_sel}} & res_nor ;
+				  
+	wire s_Zero;
+	assign s_Zero = ~(res_add[0]
+| res_add[1]
+| res_add[2]
+| res_add[3]
+| res_add[4]
+| res_add[5]
+| res_add[6]
+| res_add[7]
+| res_add[8]
+| res_add[9]
+| res_add[10]
+| res_add[11]
+| res_add[12]
+| res_add[13]
+| res_add[14]
+| res_add[15]
+| res_add[16]
+| res_add[17]
+| res_add[18]
+| res_add[19]
+| res_add[20]
+| res_add[21]
+| res_add[22]
+| res_add[23]
+| res_add[24]
+| res_add[25]
+| res_add[26]
+| res_add[27]
+| res_add[28]
+| res_add[29]
+| res_add[30]
+| res_add[31]);
+
+	assign s_Equal = beq_sel & s_Zero | bne_sel & (~s_Zero);
+
+endmodule

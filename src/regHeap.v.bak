@@ -1,0 +1,14 @@
+module regHeap(rs, rt, rd, A, B, s_write);
+
+input wire [4:0] rs;
+input wire [4:0] rt;
+
+input wire [4:0] rd;
+input wire s_write; 
+
+output wire [31:0] A;
+output wire [32:0] B;
+
+
+endmodule
+
